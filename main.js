@@ -9,7 +9,7 @@ const networkCtx = networkCanvas.getContext("2d");
 
 const road=new Road(carCanvas.width/2, carCanvas.width*0.9);
 
-const N=2;
+const N=200;
 const cars=generateCars(N);
 let bestCar=cars[0];
 if(localStorage.getItem("bestBrain")){
@@ -22,15 +22,15 @@ if(localStorage.getItem("bestBrain")){
     }
 }
 
+// Generate random 1000 lines of vehicle
 const traffic = [];
-
-for(let i = 0; i < 1000; i++) {
+for(let i = 0; i < 100; i++) {
     const lane = Math.floor(Math.random()*3);
     const x = road.getLaneCenter(lane);
     const y = -i *200 -100;
     traffic.push(new Car(x, y, 30, 50, "DUMMY", 2));
 }
-for(let j = 0; j < 1000; j++) {
+for(let j = 0; j < 100; j++) {
     const lane = Math.floor(Math.random()*3);
     const x = road.getLaneCenter(lane);
     const y = -j *200 -100;
