@@ -17,7 +17,7 @@ if(localStorage.getItem("bestBrain")){
         cars[i].brain=JSON.parse(
             localStorage.getItem("bestBrain"));
         if(i!=0){
-            NeuralNetwork.mutate(cars[i].brain,0.04);
+            NeuralNetwork.mutate(cars[i].brain,0.001);
         }
     }
 }
@@ -105,7 +105,7 @@ function animate(time){
     
     carCtx.restore();
 
-    networkCtx.lineDashOffset=-time/50;
+    networkCtx.lineDashOffset=-time/200;
     Visualizer.drawNetwork(networkCtx,bestCar.brain);
     requestAnimationFrame(animate);
 }
