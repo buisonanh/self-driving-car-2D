@@ -1,0 +1,14 @@
+// Generate random 1000 lines of vehicle
+const traffic = [];
+for(let i = 0; i < 100; i++) {
+    const lane = Math.floor(Math.random()*3);
+    const x = road.getLaneCenter(lane);
+    const y = -i *200 -100;
+    traffic.push(new Car(x, y, 30, 50, "DUMMY", 2));
+}
+for(let j = 0; j < 100; j++) {
+    const lane = Math.floor(Math.random()*3);
+    const x = road.getLaneCenter(lane);
+    const y = -j *200 -100;
+    traffic.push(new Car(x, y, 30, 50, "DUMMY", 2));
+}
