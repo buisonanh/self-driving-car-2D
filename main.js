@@ -9,7 +9,7 @@ const networkCtx = networkCanvas.getContext("2d");
 
 const road=new Road(carCanvas.width/2, carCanvas.width*0.9);
 
-const N=2;
+const N=100;
 const cars=generateCars(N);
 let bestCar=cars[0];
 if(localStorage.getItem("bestBrain")){
@@ -21,6 +21,10 @@ if(localStorage.getItem("bestBrain")){
         }
     }
 }
+
+let generation = 0;
+let score = 0;
+
 
 // Generate random 1000 lines of vehicle
 const traffic = [];
@@ -90,6 +94,15 @@ function animate(time){
 
     networkCtx.lineDashOffset=-time/200;
     Visualizer.drawNetwork(networkCtx,bestCar.brain);
+
+    // Save the best car's brain every 10 generations
+    if (generation % 10 === 0) {
+        localStorage.setItem("bestBrain", JSON.stringify(bestCar.brain));
+    }
+
+    // Increment the generation counter
+    generation++;
+
     requestAnimationFrame(animate);
 }
 
